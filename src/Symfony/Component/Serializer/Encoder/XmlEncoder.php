@@ -346,7 +346,7 @@ class XmlEncoder extends SerializerAwareEncoder implements EncoderInterface, Dec
             $val = $this->parseXml($subnode);
 
             if ('item' === $subnode->nodeName && isset($val['@key'])) {
-                if (isset($val['#'])) {
+                if (isset($val['#']) && count(array_keys($val)) == 2) {
                     $value[$val['@key']] = $val['#'];
                 } else {
                     $value[$val['@key']] = $val;
